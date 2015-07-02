@@ -6,7 +6,7 @@
 dim act
 act = Request.QueryString("act")
 if act="input" then
-	Set input = Server.CreateObject("ADODB.RecordSet")
+	'Set input = Server.CreateObject("ADODB.RecordSet")
 	Set input = objConn.Execute("INSERT INTO employee(nama," &_
 													"alamat," &_
 													"notelpon," &_
@@ -19,9 +19,19 @@ if act="input" then
 												"'" & Request.Form("kecamatan")& "')")
 	Response.Redirect("index.asp")
 elseif act="edit" then
-	response.write("EDIT TABLE DI DATABASE")
+	'Set update = Server.CreateObject("ADODB.RecordSet")
+	Set update = objConn.Execute("UPDATE employee SET nama='" & Request.Form("nama") & "'," &_
+														"alamat='" & Request.Form("alamat") & "'," &_
+														"notelpon='" & Request.Form("notelpon") & "'," &_
+														"kelurahan='" & Request.Form("kelurahan") & "'," &_
+														"kecamatan='" & Request.Form("kecamatan") & "'" &_
+													"WHERE id='" & Request.Form("id")& "'")
+	Response.Redirect("index.asp")
 elseif act="hapus" then
-	response.write("HAPUS RECORD")
+	dim id
+	id=Request.QueryString("id")
+	Set delete = objConn.Execute("DELETE FROM employee WHERE id='"& id &"'")
+	Response.Redirect("index.asp")
 end if
 %>
 </body>
