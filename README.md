@@ -2,10 +2,8 @@
 This simple coding for any programming language
 
 # Feature
-- HTML
-- CSS
-- Bootstrap
-- Javascript
+- Visual Basic
+- PHP
 
 # Contact
 - Instagram : @irvaen182
